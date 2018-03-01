@@ -24,6 +24,8 @@ int main() {
     for (std::vector<int>::size_type i = 0; i != vec2.size(); ++i)
         std::cout << vec2[i] << " ";
 
+    std::cout << std::endl;
+
     // copy all values that are not divisible by 3
     my_remove_copy_if(vec.begin(), vec.end(), back_inserter(vec3), IsDivisibleByThree);
 
