@@ -16,8 +16,8 @@ int main() {
     my_remove_copy(vec.begin(), vec.end(), back_inserter(vec2), 3);
 
     // print results
-    for (std::vector<int>::size_type i = 0; i != vec.size(); ++i)
-        std::cout << vec[i] << " ";
+    for (std::vector<int>::size_type i = 0; i != vec2.size(); ++i)
+        std::cout << vec2[i] << " ";
 
     return 0;
 }
