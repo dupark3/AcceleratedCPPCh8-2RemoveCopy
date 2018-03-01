@@ -2,6 +2,7 @@
 #include <iterator> // back_inserter
 #include <vector>
 
+#include "my_remove.h"
 #include "my_remove_copy.h"
 #include "my_remove_copy_if.h"
 
@@ -17,22 +18,32 @@ int main() {
     std::vector<int> vec2;
     std::vector<int> vec3;
 
-    // copy all values that are NOT 3 into vec2
-    my_remove_copy(vec.begin(), vec.end(), back_inserter(vec2), 3);
-
-    // print results
-    for (std::vector<int>::size_type i = 0; i != vec2.size(); ++i)
-        std::cout << vec2[i] << " ";
-
+    // print original vector
+    std::cout << "Original vector to modify: ";
+    for (std::vector<int>::size_type i = 0; i != vec.size(); ++i)
+        std::cout << vec[i] << " ";
     std::cout << std::endl;
 
-    // copy all values that are not divisible by 3
-    my_remove_copy_if(vec.begin(), vec.end(), back_inserter(vec3), IsDivisibleByThree);
+    // copy all values that are NOT 3 into vec2 and print results
+    my_remove_copy(vec.begin(), vec.end(), back_inserter(vec2), 3);
+    std::cout << "Result of my_remove_copy with value 3: ";
+    for (std::vector<int>::size_type i = 0; i != vec2.size(); ++i)
+        std::cout << vec2[i] << " ";
+    std::cout << std::endl;
 
-    // print results
+    // copy all values that are not divisible by 3 and print results
+    my_remove_copy_if(vec.begin(), vec.end(), back_inserter(vec3), IsDivisibleByThree);
+    std::cout << "Result of my_remove_copy_if with predicate \"Divisible by Three\": ";
     for (std::vector<int>::size_type i = 0; i != vec3.size(); ++i)
         std::cout << vec3[i] << " ";
+    std::cout << std::endl;
 
+    // move any value equal to 3 to the front of the vector. Do not resize to show that the vector size didn't change.
+    my_remove(vec.begin(), vec.end(), 3);
+    std::cout << "Result of my_remove with value 3: ";
+    for (std::vector<int>::size_type i = 0; i != vec.size(); ++i)
+        std::cout << vec[i] << " ";
+    std::cout << std::endl;
 
     return 0;
 }
