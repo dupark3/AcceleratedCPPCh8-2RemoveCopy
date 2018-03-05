@@ -14,7 +14,7 @@ int main() {
     // Only creates a new vector without any matching value
 
     int myints[] = {1, 2, 3, 3, 4, 3, 5, 6};
-    std::vector<int> vec (myints, myints + sizeof(myints) / sizeof(int));
+    std::vector<int> vec (myints, myints + sizeof(myints) / sizeof(*myints));
     std::vector<int> vec2;
     std::vector<int> vec3;
 
